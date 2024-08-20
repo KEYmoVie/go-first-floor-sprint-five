@@ -109,7 +109,13 @@ func (r Running) Calories() float64 {
 // Это переопределенный метод TrainingInfo() из Training.
 func (r Running) TrainingInfo() InfoMessage {
 	// вставьте ваш код ниже
-	...
+	return InfoMessage{
+		TrainingType : r.TrainingType,
+		Duration     : time.Duration(r.Duration.Minutes()),
+		Distance     : r.distance(),
+		Speed        : r.meanSpeed(),
+		Calories     : r.Calories(),	
+	}
 }
 
 // Константы для расчета потраченных килокалорий при ходьбе.
