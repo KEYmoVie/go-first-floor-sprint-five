@@ -192,7 +192,13 @@ func (s Swimming) Calories() float64 {
 // Это переопределенный метод TrainingInfo() из Training.
 func (s Swimming) TrainingInfo() InfoMessage {
 	// вставьте ваш код ниже
-	...
+	return InfoMessage{
+		TrainingType : s.TrainingType,
+		Duration     : time.Duration(s.Duration.Minutes()),
+		Distance     : s.distance(),
+		Speed        : s.meanSpeed(),
+		Calories     : s.Calories(),	
+	}
 }
 
 // ReadData возвращает информацию о проведенной тренировке.
