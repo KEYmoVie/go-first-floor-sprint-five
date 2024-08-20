@@ -102,7 +102,7 @@ type Running struct {
 // Это переопределенный метод Calories() из Training.
 func (r Running) Calories() float64 {
 	// вставьте ваш код ниже
-	return (CaloriesMeanSpeedMultiplier * r.meanSpeed() + CaloriesMeanSpeedShift) * r.Weight / MInKm * float64(t.Duration.Hours()) * MinInHours
+	return (CaloriesMeanSpeedMultiplier * r.meanSpeed() + CaloriesMeanSpeedShift) * r.Weight / MInKm * float64(r.Duration.Hours()) * MinInHours
 }
 
 // TrainingInfo возвращает структуру InfoMessage с информацией о проведенной тренировке.
@@ -139,7 +139,7 @@ type Walking struct {
 // Это переопределенный метод Calories() из Training.
 func (w Walking) Calories() float64 {
 	// вставьте ваш код ниже	
-	return (CaloriesWeightMultiplier * w.Weight + (math.Pow(w.meanSpeed()*KmHInMsec, 2) / w.Height) * CaloriesSpeedHeightMultiplier * w.Weight) * float64(t.Duration.Hours()) * MinInHours	
+	return (CaloriesWeightMultiplier * w.Weight + (math.Pow(w.meanSpeed()*KmHInMsec, 2) / w.Height) * CaloriesSpeedHeightMultiplier * w.Weight) * float64(w.Duration.Hours()) * MinInHours	
 }
 
 // TrainingInfo возвращает структуру InfoMessage с информацией о проведенной тренировке.
@@ -176,7 +176,7 @@ type Swimming struct {
 // Это переопределенный метод Calories() из Training.
 func (s Swimming) meanSpeed() float64 {
 	// вставьте ваш код ниже
-	return s.LengthPool * s.CountPool / MInKm / float64(t.Duration.Hours())
+	return s.LengthPool * s.CountPool / MInKm / float64(s.Duration.Hours())
 }
 
 // Calories возвращает количество калорий, потраченных при плавании.
