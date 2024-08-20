@@ -54,10 +54,16 @@ type InfoMessage struct {
 	Calories float64     // количество потраченных килокалорий на тренировке
 }
 
-// TrainingInfo возвращает труктуру InfoMessage, в которой хранится вся информация о проведенной тренировке.
+// TrainingInfo возвращает cруктуру InfoMessage, в которой хранится вся информация о проведенной тренировке.
 func (t Training) TrainingInfo() InfoMessage {
 	// вставьте ваш код ниже
-	...
+	return InfoMessage{
+		TrainingType : t.TrainingType,
+		Duration     : time.Duration(t.Duration.Minutes()),
+		Distance     : t.distance(),
+		Speed        : t.meanSpeed(),
+		Calories     : t.Calories(),	
+	}
 }
 
 // String возвращает строку с информацией о проведенной тренировке.
